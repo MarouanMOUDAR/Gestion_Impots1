@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoriquePersonnelMaterielEditDlg" widgetVar="HistoriquePersonnelMaterielEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditHistoriquePersonnelMaterielTitle}">
+            <h:form id="HistoriquePersonnelMaterielEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historiquePersonnelMaterielController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditHistoriquePersonnelMaterielLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{historiquePersonnelMaterielController.selected.type}" title="#{bundle.EditHistoriquePersonnelMaterielTitle_type}" />
+                        <p:outputLabel value="#{bundle.EditHistoriquePersonnelMaterielLabel_date}" for="date" />
+                        <p:inputText id="date" value="#{historiquePersonnelMaterielController.selected.date}" title="#{bundle.EditHistoriquePersonnelMaterielTitle_date}" />
+                        <p:outputLabel value="#{bundle.EditHistoriquePersonnelMaterielLabel_personnel}" for="personnel" />
+                        <p:selectOneMenu id="personnel" value="#{historiquePersonnelMaterielController.selected.personnel}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"
+                                           var="personnelItem"
+                                           itemValue="#{personnelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditHistoriquePersonnelMaterielLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{historiquePersonnelMaterielController.selected.id}" title="#{bundle.EditHistoriquePersonnelMaterielTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historiquePersonnelMaterielController.update}" value="#{bundle.Save}" update="display,:HistoriquePersonnelMaterielListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HistoriquePersonnelMaterielEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HistoriquePersonnelMaterielEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

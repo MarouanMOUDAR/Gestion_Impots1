@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterielViewDlg" widgetVar="MaterielViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMaterielTitle}">
+            <h:form id="MaterielViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materielController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMaterielLabel_personnel}"/>
+                        <h:outputText value="#{materielController.selected.personnel}" title="#{bundle.ViewMaterielTitle_personnel}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_nom}"/>
+                        <h:outputText value="#{materielController.selected.nom}" title="#{bundle.ViewMaterielTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_model}"/>
+                        <h:outputText value="#{materielController.selected.model}" title="#{bundle.ViewMaterielTitle_model}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_marque}"/>
+                        <h:outputText value="#{materielController.selected.marque}" title="#{bundle.ViewMaterielTitle_marque}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_marchet}"/>
+                        <h:outputText value="#{materielController.selected.marchet}" title="#{bundle.ViewMaterielTitle_marchet}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_id}"/>
+                        <h:outputText value="#{materielController.selected.id}" title="#{bundle.ViewMaterielTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MaterielViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

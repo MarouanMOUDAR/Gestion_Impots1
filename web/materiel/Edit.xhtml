@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterielEditDlg" widgetVar="MaterielEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMaterielTitle}">
+            <h:form id="MaterielEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materielController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_personnel}" for="personnel" />
+                        <p:selectOneMenu id="personnel" value="#{materielController.selected.personnel}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"
+                                           var="personnelItem"
+                                           itemValue="#{personnelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{materielController.selected.nom}" title="#{bundle.EditMaterielTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_model}" for="model" />
+                        <p:selectOneMenu id="model" value="#{materielController.selected.model}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modelController.itemsAvailableSelectOne}"
+                                           var="modelItem"
+                                           itemValue="#{modelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_marque}" for="marque" />
+                        <p:selectOneMenu id="marque" value="#{materielController.selected.marque}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{marqueController.itemsAvailableSelectOne}"
+                                           var="marqueItem"
+                                           itemValue="#{marqueItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_marchet}" for="marchet" />
+                        <p:selectOneMenu id="marchet" value="#{materielController.selected.marchet}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{marchetController.itemsAvailableSelectOne}"
+                                           var="marchetItem"
+                                           itemValue="#{marchetItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{materielController.selected.id}" title="#{bundle.EditMaterielTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materielController.update}" value="#{bundle.Save}" update="display,:MaterielListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MaterielEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MaterielEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

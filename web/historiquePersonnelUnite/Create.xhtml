@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoriquePersonnelUniteCreateDlg" widgetVar="HistoriquePersonnelUniteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateHistoriquePersonnelUniteTitle}">
+            <h:form id="HistoriquePersonnelUniteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historiquePersonnelUniteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateHistoriquePersonnelUniteLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{historiquePersonnelUniteController.selected.type}" title="#{bundle.CreateHistoriquePersonnelUniteTitle_type}" />
+                        <p:outputLabel value="#{bundle.CreateHistoriquePersonnelUniteLabel_date}" for="date" />
+                        <p:inputText id="date" value="#{historiquePersonnelUniteController.selected.date}" title="#{bundle.CreateHistoriquePersonnelUniteTitle_date}" />
+                        <p:outputLabel value="#{bundle.CreateHistoriquePersonnelUniteLabel_personnel}" for="personnel" />
+                        <p:selectOneMenu id="personnel" value="#{historiquePersonnelUniteController.selected.personnel}" >
+                            <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"
+                                           var="personnelItem"
+                                           itemValue="#{personnelItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateHistoriquePersonnelUniteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{historiquePersonnelUniteController.selected.id}" title="#{bundle.CreateHistoriquePersonnelUniteTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historiquePersonnelUniteController.create}" value="#{bundle.Save}" update="display,:HistoriquePersonnelUniteListForm:datalist,:growl" oncomplete="handleSubmit(args,'HistoriquePersonnelUniteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HistoriquePersonnelUniteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

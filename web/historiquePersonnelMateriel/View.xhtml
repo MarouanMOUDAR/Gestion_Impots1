@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoriquePersonnelMaterielViewDlg" widgetVar="HistoriquePersonnelMaterielViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewHistoriquePersonnelMaterielTitle}">
+            <h:form id="HistoriquePersonnelMaterielViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historiquePersonnelMaterielController.selected != null}">
+                        <h:outputText value="#{bundle.ViewHistoriquePersonnelMaterielLabel_type}"/>
+                        <h:outputText value="#{historiquePersonnelMaterielController.selected.type}" title="#{bundle.ViewHistoriquePersonnelMaterielTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewHistoriquePersonnelMaterielLabel_date}"/>
+                        <h:outputText value="#{historiquePersonnelMaterielController.selected.date}" title="#{bundle.ViewHistoriquePersonnelMaterielTitle_date}"/>
+                        <h:outputText value="#{bundle.ViewHistoriquePersonnelMaterielLabel_personnel}"/>
+                        <h:outputText value="#{historiquePersonnelMaterielController.selected.personnel}" title="#{bundle.ViewHistoriquePersonnelMaterielTitle_personnel}"/>
+                        <h:outputText value="#{bundle.ViewHistoriquePersonnelMaterielLabel_id}"/>
+                        <h:outputText value="#{historiquePersonnelMaterielController.selected.id}" title="#{bundle.ViewHistoriquePersonnelMaterielTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="HistoriquePersonnelMaterielViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
