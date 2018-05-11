@@ -19,13 +19,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-
 @Named("uniteDeGestionController")
 @SessionScoped
 public class UniteDeGestionController implements Serializable {
 
-
-    @EJB private service.UniteDeGestionFacade ejbFacade;
+    @EJB
+    private service.UniteDeGestionFacade ejbFacade;
     private List<UniteDeGestion> items = null;
     private UniteDeGestion selected;
 
@@ -122,7 +121,7 @@ public class UniteDeGestionController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass=UniteDeGestion.class)
+    @FacesConverter(forClass = UniteDeGestion.class)
     public static class UniteDeGestionControllerConverter implements Converter {
 
         @Override
@@ -130,7 +129,7 @@ public class UniteDeGestionController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            UniteDeGestionController controller = (UniteDeGestionController)facesContext.getApplication().getELResolver().
+            UniteDeGestionController controller = (UniteDeGestionController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "uniteDeGestionController");
             return controller.getUniteDeGestion(getKey(value));
         }

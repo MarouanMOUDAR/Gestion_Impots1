@@ -5,7 +5,9 @@
  */
 package service;
 
+import bean.Materiel;
 import bean.Personnel;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +22,14 @@ public class PersonnelFacade extends AbstractFacade<Personnel> {
     @PersistenceContext(unitName = "impotsG1PU")
     private EntityManager em;
 
+    public List<Materiel> findMateriel(Personnel personnel){
+        
+        List<Materiel> m= em.createQuery("SELECT m FROM Materiel m WHERE m.personnel.id='"+personnel.getId().toString()+"'").getResultList();
+        
+        return m;
+        
+        
+    }
     @Override
     protected EntityManager getEntityManager() {
         return em;

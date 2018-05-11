@@ -29,33 +29,39 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListMaterielTitle_personnel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.personnel.nom}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListMaterielTitle_nom}"/>
                             </f:facet>
                             <h:outputText value="#{item.nom}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterielTitle_statut}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.statut}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListMaterielTitle_model}"/>
                             </f:facet>
-                            <h:outputText value="#{item.model.nom}"/>
+                            <h:outputText value="#{item.model}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListMaterielTitle_marque}"/>
                             </f:facet>
-                            <h:outputText value="#{item.marque.nom}"/>
+                            <h:outputText value="#{item.marque}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListMaterielTitle_marchet}"/>
                             </f:facet>
-                            <h:outputText value="#{item.marchet.nom}"/>
+                            <h:outputText value="#{item.marchet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterielTitle_personnel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personnel}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

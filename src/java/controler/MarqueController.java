@@ -19,13 +19,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-
 @Named("marqueController")
 @SessionScoped
 public class MarqueController implements Serializable {
 
-
-    @EJB private service.MarqueFacade ejbFacade;
+    @EJB
+    private service.MarqueFacade ejbFacade;
     private List<Marque> items = null;
     private Marque selected;
 
@@ -122,7 +121,7 @@ public class MarqueController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass=Marque.class)
+    @FacesConverter(forClass = Marque.class)
     public static class MarqueControllerConverter implements Converter {
 
         @Override
@@ -130,7 +129,7 @@ public class MarqueController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            MarqueController controller = (MarqueController)facesContext.getApplication().getELResolver().
+            MarqueController controller = (MarqueController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "marqueController");
             return controller.getMarque(getKey(value));
         }

@@ -19,13 +19,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-
 @Named("historiqueMaterielController")
 @SessionScoped
 public class HistoriqueMaterielController implements Serializable {
 
-
-    @EJB private service.HistoriqueMaterielFacade ejbFacade;
+    @EJB
+    private service.HistoriqueMaterielFacade ejbFacade;
     private List<HistoriqueMateriel> items = null;
     private HistoriqueMateriel selected;
 
@@ -122,7 +121,7 @@ public class HistoriqueMaterielController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass=HistoriqueMateriel.class)
+    @FacesConverter(forClass = HistoriqueMateriel.class)
     public static class HistoriqueMaterielControllerConverter implements Converter {
 
         @Override
@@ -130,7 +129,7 @@ public class HistoriqueMaterielController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            HistoriqueMaterielController controller = (HistoriqueMaterielController)facesContext.getApplication().getELResolver().
+            HistoriqueMaterielController controller = (HistoriqueMaterielController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "historiqueMaterielController");
             return controller.getHistoriqueMateriel(getKey(value));
         }

@@ -12,14 +12,10 @@
             <h:form id="MaterielCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{materielController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMaterielLabel_personnel}" for="personnel" />
-                        <p:selectOneMenu id="personnel" value="#{materielController.selected.personnel}" >
-                            <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"
-                                           var="personnelItem"
-                                           itemValue="#{personnelItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMaterielLabel_nom}" for="nom" />
                         <p:inputText id="nom" value="#{materielController.selected.nom}" title="#{bundle.CreateMaterielTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateMaterielLabel_statut}" for="statut" />
+                        <p:inputText id="statut" value="#{materielController.selected.statut}" title="#{bundle.CreateMaterielTitle_statut}" />
                         <p:outputLabel value="#{bundle.CreateMaterielLabel_model}" for="model" />
                         <p:selectOneMenu id="model" value="#{materielController.selected.model}" >
                             <f:selectItems value="#{modelController.itemsAvailableSelectOne}"
@@ -37,6 +33,12 @@
                             <f:selectItems value="#{marchetController.itemsAvailableSelectOne}"
                                            var="marchetItem"
                                            itemValue="#{marchetItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMaterielLabel_personnel}" for="personnel" />
+                        <p:selectOneMenu id="personnel" value="#{materielController.selected.personnel}" >
+                            <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"
+                                           var="personnelItem"
+                                           itemValue="#{personnelItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMaterielLabel_id}" for="id" />
                         <p:inputText id="id" value="#{materielController.selected.id}" title="#{bundle.CreateMaterielTitle_id}" />

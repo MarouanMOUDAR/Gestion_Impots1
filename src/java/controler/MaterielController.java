@@ -28,6 +28,11 @@ public class MaterielController implements Serializable {
     private List<Materiel> items = null;
     private Materiel selected;
 
+    public String MatosAAffecte() {
+        items = ejbFacade.findAll();
+        return "/personnel/MatosAAffecte";
+    }
+
     public MaterielController() {
     }
 

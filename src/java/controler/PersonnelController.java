@@ -1,5 +1,6 @@
 package controler;
 
+import bean.Materiel;
 import bean.Personnel;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
@@ -19,17 +20,39 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-
 @Named("personnelController")
 @SessionScoped
 public class PersonnelController implements Serializable {
 
-
-    @EJB private service.PersonnelFacade ejbFacade;
+    @EJB
+    private service.PersonnelFacade ejbFacade;
     private List<Personnel> items = null;
     private Personnel selected;
+    private List<Materiel> materiels;
+
+    public String findMatos() {
+       
+        materiels = ejbFacade.findMateriel(selected);
+        return "/personnel/MatosPerso";
+    }
 
     public PersonnelController() {
+    }
+
+    public PersonnelFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(PersonnelFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public List<Materiel> getMateriels() {
+        return materiels;
+    }
+
+    public void setMateriels(List<Materiel> materiels) {
+        this.materiels = materiels;
     }
 
     public Personnel getSelected() {
@@ -122,7 +145,7 @@ public class PersonnelController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass=Personnel.class)
+    @FacesConverter(forClass = Personnel.class)
     public static class PersonnelControllerConverter implements Converter {
 
         @Override
@@ -130,7 +153,7 @@ public class PersonnelController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            PersonnelController controller = (PersonnelController)facesContext.getApplication().getELResolver().
+            PersonnelController controller = (PersonnelController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "personnelController");
             return controller.getPersonnel(getKey(value));
         }

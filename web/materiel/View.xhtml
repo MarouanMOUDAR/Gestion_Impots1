@@ -12,16 +12,18 @@
             <h:form id="MaterielViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{materielController.selected != null}">
-                        <h:outputText value="#{bundle.ViewMaterielLabel_personnel}"/>
-                        <h:outputText value="#{materielController.selected.personnel}" title="#{bundle.ViewMaterielTitle_personnel}"/>
                         <h:outputText value="#{bundle.ViewMaterielLabel_nom}"/>
                         <h:outputText value="#{materielController.selected.nom}" title="#{bundle.ViewMaterielTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_statut}"/>
+                        <h:outputText value="#{materielController.selected.statut}" title="#{bundle.ViewMaterielTitle_statut}"/>
                         <h:outputText value="#{bundle.ViewMaterielLabel_model}"/>
                         <h:outputText value="#{materielController.selected.model}" title="#{bundle.ViewMaterielTitle_model}"/>
                         <h:outputText value="#{bundle.ViewMaterielLabel_marque}"/>
                         <h:outputText value="#{materielController.selected.marque}" title="#{bundle.ViewMaterielTitle_marque}"/>
                         <h:outputText value="#{bundle.ViewMaterielLabel_marchet}"/>
                         <h:outputText value="#{materielController.selected.marchet}" title="#{bundle.ViewMaterielTitle_marchet}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_personnel}"/>
+                        <h:outputText value="#{materielController.selected.personnel}" title="#{bundle.ViewMaterielTitle_personnel}"/>
                         <h:outputText value="#{bundle.ViewMaterielLabel_id}"/>
                         <h:outputText value="#{materielController.selected.id}" title="#{bundle.ViewMaterielTitle_id}"/>
                     </p:panelGrid>
