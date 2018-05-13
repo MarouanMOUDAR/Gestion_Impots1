@@ -29,14 +29,57 @@ public class PersonnelController implements Serializable {
     private List<Personnel> items = null;
     private Personnel selected;
     private List<Materiel> materiels;
+    private String nom;
+    private String prenom;
+    private Long id;
 
     public String findMatos() {
-       
+
         materiels = ejbFacade.findMateriel(selected);
         return "/personnel/MatosPerso";
     }
 
+    public void filterNom(String nom) {
+        items = ejbFacade.filterByNom(nom);
+    }
+
+    public void filterPrenom(String prenom) {
+        items = ejbFacade.filterByPrenom(prenom);
+    }
+
+    public void filterId(Long id) {
+        items = ejbFacade.filterById(id);
+    }
+    public String ListMatosNnAffecte(){
+        materiels=ejbFacade.findMatosNnAffecte();
+        return "/personnel/MatosAAffecte";
+    }
+
     public PersonnelController() {
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public PersonnelFacade getEjbFacade() {

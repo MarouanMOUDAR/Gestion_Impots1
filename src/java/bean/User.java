@@ -26,14 +26,13 @@ public class User implements Serializable {
     @Id
     private String login;
     private String password;
-    private String type;
+    private int type;
     private int blocked;
     private int nbrCnx;
     private boolean mdpChanged;
     @OneToOne
     private Personnel personnel;
 
-    
     public User(String login) {
         this.login = login;
     }
@@ -50,13 +49,11 @@ public class User implements Serializable {
         this.personnel = personnel;
     }
 
-    
-    
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

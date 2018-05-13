@@ -34,12 +34,7 @@
                                            var="marchetItem"
                                            itemValue="#{marchetItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMaterielLabel_personnel}" for="personnel" />
-                        <p:selectOneMenu id="personnel" value="#{materielController.selected.personnel}" >
-                            <f:selectItems value="#{personnelController.itemsAvailableSelectOne}"
-                                           var="personnelItem"
-                                           itemValue="#{personnelItem}"/>
-                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateMaterielLabel_id}" for="id" />
                         <p:inputText id="id" value="#{materielController.selected.id}" title="#{bundle.CreateMaterielTitle_id}" />
                     </p:panelGrid>

@@ -27,8 +27,68 @@ public class UserController implements Serializable {
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
+    private String login;
+    private String password;
+
+    public String seConnecter() {
+        int res = ejbFacade.seConnecter(password, login);
+        switch (res) {
+            case -1:
+                System.out.println("pas trouver");
+                return null;
+            case -2:
+                System.out.println("password incorrect");
+                return null;
+            case -3:
+                System.out.println("login introuvable");
+                return null;
+            case 3:
+                System.out.println("admin");
+                return "accueiAdmin";
+            case 2:
+                System.out.println("respo info");
+                return "accueiUserInfo";
+            case 1:
+                System.out.println("respo RH");
+                return "accueiUserRH";
+
+            default:
+                System.out.println("ERROR");
+                return null;
+        }
+    }
+
+    public String listAllPersos() {
+        return "/personnel/List";
+    }
+
+    public String listAllMatos() {
+        return "/materiel/List";
+    }
+
+    public String listAllUsers() {
+        return "/user/List";
+    }
 
     public UserController() {
+    }
+
+    public String getLogin() {
+        String login = null;
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        String password = null;
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public User getSelected() {

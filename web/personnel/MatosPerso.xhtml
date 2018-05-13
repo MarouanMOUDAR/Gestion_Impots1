@@ -12,6 +12,7 @@
     </h:head>
     <h:body>
         <h:form>
+            <p:commandButton value="affect new materiel" actionListener="#{personnelController.listMatosNnAffecte()}"/>
             <p:dataTable id="datalist" value="#{personnelController.getMateriels()}" var="item"
                          selectionMode="single" selection="#{materielController.selected}"
                          paginator="true"
@@ -57,7 +58,7 @@
                     </f:facet>
                     <h:outputText value="#{item.id}"/>
                 </p:column>
-
+                
             </p:dataTable>
         </h:form>
     </h:body>
